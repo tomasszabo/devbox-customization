@@ -1,0 +1,29 @@
+$schema: "1.0"
+name: "sql-development-customization"
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+tasks:
+  - name: winget
+    description: Install Chocolatey
+    parameters:
+      package: Chocolatey.Chocolatey
+  - name: powershell
+    description: Install SQL Management Studio via Chocolatey
+    parameters: 
+      command: choco install sql-server-management-studio -y
+  - name: winget
+    parameters:
+      package: Microsoft.VisualStudioCode
+  - name: powershell
+    description: Install VSCode extensions
+    parameters:
+      command: |
+        $env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User')
+        code --install-extension GitHub.copilot
+        code --install-extension GitHub.copilot-chat
+        code --install-extension ms-azuretools.vscode-azure-github-copilot
+        code --install-extension humao.rest-client
+        code --install-extension ms-azuretools.vscode-bicep
+        code --install-extension devcenter.ms-devbox
+        code --install-extension redhat.vscode-xml
+        code --install-extension redhat.vscode-yaml
+        code --install-extension ms-azure-devops.azure-pipelines
