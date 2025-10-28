@@ -1,0 +1,17 @@
+$schema: "1.0"
+name: "dark-scheme-customization"
+userTasks:
+  - name: ~/winget
+    description: "Install Postman"
+    parameters:
+      package: Postman.Postman
+  - name: ~/PowerShell
+    description: "Set PowerShell as default shell"
+    parameters:
+      shell: |
+        # Example: Set Dark Mode and Accent Color
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 0
+
+        # Set Accent Color (e.g., Blue)
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "AccentColor" -Value 0xff0000ff
